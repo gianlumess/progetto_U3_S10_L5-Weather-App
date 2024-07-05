@@ -14,7 +14,14 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home setArrayCities={setArrayCities} setLatitude={setLatitude} setLongitude={setLongitude} />}
+          element={
+            <Home
+              arrayCities={arrayCities}
+              setArrayCities={setArrayCities}
+              setLatitude={setLatitude}
+              setLongitude={setLongitude}
+            />
+          }
         />
         <Route
           path="/weather-detail/:cityName"

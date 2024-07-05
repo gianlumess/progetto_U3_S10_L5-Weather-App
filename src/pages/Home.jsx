@@ -5,7 +5,7 @@ import Heading from "../components/Heading";
 import { useState } from "react";
 import CitiesSearched from "../components/CitiesSearched";
 
-const Home = ({ setArrayCities, setLatitude, setLongitude }) => {
+const Home = ({ arrayCities, setArrayCities, setLatitude, setLongitude }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
   return (
@@ -13,8 +13,14 @@ const Home = ({ setArrayCities, setLatitude, setLongitude }) => {
       <TopBar />
       <Container>
         <Heading />
-        <SearchQuery searchQuery={searchQuery} setSearchQuery={setSearchQuery} setHasSearched={setHasSearched} />
+        <SearchQuery
+          arrayCities={arrayCities}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          setHasSearched={setHasSearched}
+        />
         <CitiesSearched
+          arrayCities={arrayCities}
           setArrayCities={setArrayCities}
           searchQuery={searchQuery}
           hasSearched={hasSearched}

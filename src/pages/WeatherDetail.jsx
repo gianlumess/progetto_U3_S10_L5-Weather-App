@@ -9,7 +9,7 @@ const WeatherDetail = () => {
   const params = useParams();
   const fetchWeatherCitySearched = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa&units=metric`
     )
       .then((resp) => {
         if (resp.ok) {
@@ -36,8 +36,8 @@ const WeatherDetail = () => {
       <TopBar />
       <Container>
         {infoCityWeather !== null && (
-          <Row>
-            <Col md={3}>
+          <Row id="sidebar" className="mt-5 border">
+            <Col md={3} className="border-end text-center py-2">
               <SideBarWeather infoCityWeather={infoCityWeather} />
             </Col>
             <Col md={9}></Col>

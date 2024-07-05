@@ -1,11 +1,24 @@
-import { Form, InputGroup } from "react-bootstrap";
+import { useState } from "react";
+import { Form } from "react-bootstrap";
 
-const SearchQuery = () => {
+const SearchQuery = ({ SearchQuery, setSearchQuery }) => {
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchQuery(input);
+
+    // Aggiungi qui la logica per gestire la ricerca
+  };
   return (
-    <Form className="mt-5">
+    <Form className="mt-4" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="searchcity">
-        <Form.Label className="display-5">Scopri che tempo fà</Form.Label>
-        <Form.Control type="text" placeholder="Inserisci Città" />
+        <Form.Control
+          type="text"
+          placeholder="Inserisci Città"
+          value={SearchQuery}
+          onChange={(e) => setInput(e.target.value)}
+        />
       </Form.Group>
     </Form>
   );

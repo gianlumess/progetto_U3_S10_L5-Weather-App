@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CitiesSearched = ({ arrayCities, setArrayCities, searchQuery, hasSearched, setLatitude, setLongitude }) => {
   const fetchLatAndLon = () => {
@@ -31,9 +32,11 @@ const CitiesSearched = ({ arrayCities, setArrayCities, searchQuery, hasSearched,
   return (
     <ListGroup>
       {arrayCities.map((city, index) => (
-        <ListGroup.Item key={index}>
-          {city.name}---{city.country}---{city.state}
-        </ListGroup.Item>
+        <Link key={index} to={"/weather-detail/" + city.name}>
+          <ListGroup.Item>
+            {city.name}---{city.country}---{city.state}
+          </ListGroup.Item>
+        </Link>
       ))}
     </ListGroup>
   );

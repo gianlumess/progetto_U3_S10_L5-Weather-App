@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const CitiesSearched = ({ searchQuery, hasSearched }) => {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+const CitiesSearched = ({ searchQuery, hasSearched, setLatitude, setLongitude }) => {
+  /*  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState(""); */
 
-  const fetchCityWeather = () => {
+  const fetchLatAndLon = () => {
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=1&appid=557333cd2bc318f169e5cb21158c02aa`
     )
@@ -18,13 +18,15 @@ const CitiesSearched = ({ searchQuery, hasSearched }) => {
       })
       .then((cityObj) => {
         console.log(cityObj);
+        setLatitude(cityObj[0].lat);
+        setLongitude(cityObj[0].lon);
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
     if (hasSearched) {
-      fetchCityWeather();
+      fetchLatAndLon();
     }
   }, [searchQuery]);
   return;

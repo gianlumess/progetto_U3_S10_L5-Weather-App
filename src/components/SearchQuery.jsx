@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 
-const SearchQuery = ({ SearchQuery, setSearchQuery }) => {
+const SearchQuery = ({ SearchQuery, setSearchQuery, setHasSearched }) => {
   const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchQuery(input);
+    setHasSearched(true);
 
     // Aggiungi qui la logica per gestire la ricerca
   };

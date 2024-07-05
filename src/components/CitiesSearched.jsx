@@ -32,7 +32,7 @@ const CitiesSearched = ({ arrayCities, setArrayCities, searchQuery, hasSearched,
   return (
     <ListGroup>
       {arrayCities.map((city, index) => (
-        <Link key={index} to={"/weather-detail/" + city.name}>
+        <Link key={index} to={"/weather-detail/" + city.name + "/" + city.lat + "/" + city.lon}>
           <ListGroup.Item>
             {city.name}---{city.country}---{city.state}
           </ListGroup.Item>

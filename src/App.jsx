@@ -24,7 +24,7 @@ function App() {
           }
         />
         <Route
-          path="/weather-detail/:cityName"
+          path="/weather-detail/:cityName/:lat/:lon"
           element={<WeatherDetail arrayCities={arrayCities} latitude={latitude} longitude={longitude} />}
         />
       </Routes>

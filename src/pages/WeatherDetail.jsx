@@ -1,7 +1,11 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 const WeatherDetail = () => {
+  const params = useParams();
   const fetchWeatherCitySearched = (arrayCities) => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${arrayCities[0].lat}&lon=${arrayCities[0].lon}&appid=557333cd2bc318f169e5cb21158c02aa`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa`
     )
       .then((resp) => {
         if (resp.ok) {
@@ -16,6 +20,10 @@ const WeatherDetail = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    fetchWeatherCitySearched();
+  }, [params.lat]);
   return;
 };
 

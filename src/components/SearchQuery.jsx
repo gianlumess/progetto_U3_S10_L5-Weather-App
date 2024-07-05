@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 
-const SearchQuery = ({ arrayCities, SearchQuery, setSearchQuery, setHasSearched }) => {
+const SearchQuery = ({ SearchQuery, setSearchQuery, setHasSearched }) => {
   const [input, setInput] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();

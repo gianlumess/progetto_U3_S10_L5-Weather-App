@@ -6,13 +6,20 @@ import WeatherDetail from "./pages/WeatherDetail";
 import { useState } from "react";
 
 function App() {
+  const [arrayCities, setArrayCities] = useState([]);
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home setLatitude={setLatitude} setLongitude={setLongitude} />} />
-        <Route path="/weather-detail/:cityName" element={<WeatherDetail latitude={latitude} longitude={longitude} />} />
+        <Route
+          path="/"
+          element={<Home setArrayCities={setArrayCities} setLatitude={setLatitude} setLongitude={setLongitude} />}
+        />
+        <Route
+          path="/weather-detail/:cityName"
+          element={<WeatherDetail arrayCities={arrayCities} latitude={latitude} longitude={longitude} />}
+        />
       </Routes>
     </BrowserRouter>
   );

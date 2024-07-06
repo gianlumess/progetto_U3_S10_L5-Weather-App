@@ -6,7 +6,10 @@ import SideBarWeather from "../components/SideBarWeather";
 
 const WeatherDetail = () => {
   const [infoCityWeather, setInfoCityWeather] = useState(null);
+  const [infoNextDays, setInfoNextDays] = useState(null);
   const params = useParams();
+
+  //funzione per la fetch per reperire i dati sul meteo della città selezionata, i parametri obbligatori vengono passati sull'url(lat e lon)
   const fetchWeatherCitySearched = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa&units=metric`
@@ -20,8 +23,27 @@ const WeatherDetail = () => {
         }
       })
       .then((cityObj) => {
-        console.log(cityObj);
+        console.log("meteo di oggi della città:", cityObj.name, cityObj);
         setInfoCityWeather(cityObj);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const fetchWeatherNextDays = () => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa`
+    )
+      .then((resp) => {
+        if (resp.ok) {
+          console.log(resp);
+          return resp.json();
+        } else {
+          throw new Error("Errore nel reperimento del meteo della città cercata");
+        }
+      })
+      .then((nextDays) => {
+        console.log("meteo dei prossimi giorni", nextDays);
+        setInfoNextDays(nextDays);
       })
       .catch((err) => console.log(err));
   };
@@ -29,6 +51,7 @@ const WeatherDetail = () => {
   useEffect(() => {
     if (infoCityWeather === null) {
       fetchWeatherCitySearched();
+      fetchWeatherNextDays();
     }
   }, [infoCityWeather]);
   return (
@@ -36,7 +59,7 @@ const WeatherDetail = () => {
       <TopBar />
       <Container>
         {infoCityWeather !== null && (
-          <Row id="sidebar" className="mt-5 border">
+          <Row id="sidebar" className="mt-5 border rounded ">
             <Col md={3} className="border-end text-center py-2">
               <SideBarWeather infoCityWeather={infoCityWeather} />
             </Col>

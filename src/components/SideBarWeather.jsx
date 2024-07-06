@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { ArrowDownShort, ArrowUpShort, Wind } from "react-bootstrap-icons";
 
 const SideBarWeather = ({ infoCityWeather }) => {
@@ -7,7 +7,10 @@ const SideBarWeather = ({ infoCityWeather }) => {
       <p className="mb-1">
         {infoCityWeather.name}, {infoCityWeather.sys.country}
       </p>
-      <h2>{infoCityWeather.main.temp}&#176;</h2>
+      <h2>
+        <Image src={`http://openweathermap.org/img/w/${infoCityWeather.weather[0].icon}.png`} />
+        {infoCityWeather.main.temp}&#176;
+      </h2>
       <div className="lead d-flex justify-content-around align-items-center">
         <div>
           <ArrowDownShort />

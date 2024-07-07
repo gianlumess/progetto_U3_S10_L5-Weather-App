@@ -9,6 +9,21 @@ const WeatherDetail = () => {
   const [infoNextDays, setInfoNextDays] = useState(null);
   const params = useParams();
 
+  const createDate = (dt, type) => {
+    const day = new Date(dt * 1000);
+    if (type == "long") {
+      let options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      return day.toLocaleString("it-IT", options); // Friday, January 15, 2021
+    } else {
+      return day.toLocaleString("it-IT", { weekday: "long" }); // Friday
+    }
+  };
+
   //funzione per la fetch per reperire i dati sul meteo della città selezionata, i parametri obbligatori vengono passati sull'url(lat e lon)
   const fetchWeatherCitySearched = () => {
     fetch(
@@ -60,8 +75,8 @@ const WeatherDetail = () => {
       <Container>
         {infoCityWeather !== null && (
           <Row id="sidebar" className="mt-5 border rounded ">
-            <Col md={3} className="border-end text-center py-2">
-              <SideBarWeather infoCityWeather={infoCityWeather} />
+            <Col md={3} className="border-end py-2 text-center">
+              <SideBarWeather infoCityWeather={infoCityWeather} infoNextDays={infoNextDays} createDate={createDate} />
             </Col>
             <Col md={9}></Col>
           </Row>

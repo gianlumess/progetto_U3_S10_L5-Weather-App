@@ -1,16 +1,20 @@
-import { Container, Image } from "react-bootstrap";
+import { Col, Container, Image, Row } from "react-bootstrap";
 import { ArrowDownShort, ArrowUpShort, Wind } from "react-bootstrap-icons";
 
-const SideBarWeather = ({ infoCityWeather }) => {
+const SideBarWeather = ({ infoCityWeather, infoNextDays, createDate }) => {
   return (
     <Container>
-      <p className="mb-1">
-        {infoCityWeather.name}, {infoCityWeather.sys.country}
-      </p>
-      <h2>
-        <Image src={`http://openweathermap.org/img/w/${infoCityWeather.weather[0].icon}.png`} />
-        {infoCityWeather.main.temp}&#176;
-      </h2>
+      <div className="d-flex flex-column align-items-center">
+        <p className="mb-1">
+          {infoCityWeather.name}, {infoCityWeather.sys.country}
+        </p>
+        <p>{createDate(infoCityWeather.dt, "long")}</p>
+        <h2>
+          <Image src={`http://openweathermap.org/img/w/${infoCityWeather.weather[0].icon}.png`} />
+          {infoCityWeather.main.temp}&#176;
+        </h2>
+      </div>
+
       <div className="lead d-flex justify-content-around align-items-center">
         <div>
           <ArrowDownShort />
@@ -27,6 +31,10 @@ const SideBarWeather = ({ infoCityWeather }) => {
           {infoCityWeather.main.temp_max}
         </div>
       </div>
+      <hr />
+      <p>Next Days</p>
+
+      {/* generazione previsioni dei prossimi 3 giorni */}
     </Container>
   );
 };

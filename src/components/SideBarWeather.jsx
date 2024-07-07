@@ -11,14 +11,14 @@ const SideBarWeather = ({ infoCityWeather, infoNextDays, createDate }) => {
         <p>{createDate(infoCityWeather.dt, "long")}</p>
         <h2>
           <Image src={`http://openweathermap.org/img/w/${infoCityWeather.weather[0].icon}.png`} />
-          {infoCityWeather.main.temp}&#176;
+          {infoCityWeather.main.temp.toString().split("").splice(0, 2)}&#176;C
         </h2>
       </div>
 
       <div className="lead d-flex justify-content-around align-items-center">
         <div>
           <ArrowDownShort />
-          {infoCityWeather.main.temp_min}
+          {infoCityWeather.main.temp_min.toString().split("").splice(0, 2)}&#176;
         </div>
 
         <div>
@@ -28,7 +28,7 @@ const SideBarWeather = ({ infoCityWeather, infoNextDays, createDate }) => {
 
         <div>
           <ArrowUpShort />
-          {infoCityWeather.main.temp_max}
+          {infoCityWeather.main.temp_max.toString().split("").splice(0, 2)}&#176;
         </div>
       </div>
       <hr />

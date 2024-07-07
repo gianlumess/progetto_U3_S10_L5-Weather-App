@@ -47,7 +47,7 @@ const WeatherDetail = () => {
 
   const fetchWeatherNextDays = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa&units=metric`
     )
       .then((resp) => {
         if (resp.ok) {

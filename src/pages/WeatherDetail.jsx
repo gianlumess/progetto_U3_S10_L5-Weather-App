@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import TopBar from "../components/TopBar";
 import { Col, Container, Row } from "react-bootstrap";
 import SideBarWeather from "../components/SideBarWeather";
+import Forecasts3Hour from "../components/Forecasts3Hour";
 
 const WeatherDetail = () => {
   const [infoCityWeather, setInfoCityWeather] = useState(null);
   const [infoNextDays, setInfoNextDays] = useState(null);
   const params = useParams();
-
+  //funzione che converte la data ricevuta dalle API
   const createDate = (dt, type) => {
     const day = new Date(dt * 1000);
     if (type == "long") {
@@ -78,7 +79,13 @@ const WeatherDetail = () => {
             <Col md={3} className="border-end py-2 text-center">
               <SideBarWeather infoCityWeather={infoCityWeather} infoNextDays={infoNextDays} createDate={createDate} />
             </Col>
-            <Col md={9}></Col>
+            <Col className="d-flex align-items-end" md={9}>
+              <h1 className="display-5">{infoCityWeather.weather[0].description}</h1>
+              <hr />
+              <Row>
+                <Forecasts3Hour infoNextDays={infoNextDays} />
+              </Row>
+            </Col>
           </Row>
         )}
       </Container>

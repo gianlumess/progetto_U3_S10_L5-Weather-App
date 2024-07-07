@@ -74,13 +74,13 @@ const WeatherDetail = () => {
     <>
       <TopBar />
       <Container>
-        {infoCityWeather !== null && (
+        {infoCityWeather !== null && infoNextDays !== null && (
           <Row id="sidebar" className="mt-5 border rounded ">
             <Col md={3} className="border-end py-2 text-center">
               <SideBarWeather infoCityWeather={infoCityWeather} infoNextDays={infoNextDays} createDate={createDate} />
             </Col>
-            <Col className="d-flex align-items-end" md={9}>
-              <h1 className="display-5">{infoCityWeather.weather[0].description}</h1>
+            <Col className="d-flex justify-content-end flex-column" md={9}>
+              <h1 className="display-1">{infoCityWeather.weather[0].description}</h1>
               <hr />
               <Row>
                 <Forecasts3Hour infoNextDays={infoNextDays} />

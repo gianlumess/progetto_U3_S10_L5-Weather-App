@@ -81,8 +81,8 @@ const WeatherDetail = () => {
             </Col>
             <Col className="d-flex justify-content-end flex-column" md={9}>
               <h1 className="display-1">{infoCityWeather.weather[0].description}</h1>
-              <hr />
-              <Row>
+              <hr className="mb-0" />
+              <Row className="py-2">
                 <Forecasts3Hour infoNextDays={infoNextDays} />
               </Row>
             </Col>

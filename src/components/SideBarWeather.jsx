@@ -1,5 +1,6 @@
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { ArrowDownShort, ArrowUpShort, Wind } from "react-bootstrap-icons";
+import Forecast5Days from "./Forecast5Days";
 
 const SideBarWeather = ({ infoCityWeather, infoNextDays, createDate }) => {
   return (
@@ -35,6 +36,7 @@ const SideBarWeather = ({ infoCityWeather, infoNextDays, createDate }) => {
       <p>Next Days</p>
 
       {/* generazione previsioni dei prossimi 3 giorni */}
+      <Forecast5Days infoNextDays={infoNextDays} />
     </Container>
   );
 };

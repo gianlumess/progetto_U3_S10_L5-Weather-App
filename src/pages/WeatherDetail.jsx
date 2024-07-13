@@ -73,14 +73,15 @@ const WeatherDetail = () => {
   return (
     <>
       <TopBar />
-      <Container>
+      <Container id="container-previsioni" className="mt-5 border rounded ">
         {infoCityWeather !== null && infoNextDays !== null && (
-          <Row id="sidebar" className="mt-5 border rounded ">
+          <Row id="sidebar">
             <Col md={3} className="border-end py-2 text-center">
               <SideBarWeather infoCityWeather={infoCityWeather} infoNextDays={infoNextDays} createDate={createDate} />
             </Col>
             <Col className="d-flex justify-content-end flex-column" md={9}>
               <h1 className="display-1">{infoCityWeather.weather[0].description}</h1>
+
               <hr className="mb-0" />
               <Row className="py-2">
                 <Forecasts3Hour infoNextDays={infoNextDays} />

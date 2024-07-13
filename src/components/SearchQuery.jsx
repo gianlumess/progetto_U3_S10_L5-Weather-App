@@ -12,6 +12,7 @@ const SearchQuery = ({ SearchQuery, setSearchQuery, setHasSearched }) => {
     <Form className="mt-4" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="searchcity">
         <Form.Control
+          id="form"
           type="text"
           placeholder="Inserisci Città"
           value={SearchQuery}

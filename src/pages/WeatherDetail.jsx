@@ -9,6 +9,7 @@ const WeatherDetail = () => {
   const [infoCityWeather, setInfoCityWeather] = useState(null);
   const [infoNextDays, setInfoNextDays] = useState(null);
   const params = useParams();
+
   //funzione che converte la data ricevuta dalle API
   const createDate = (dt, type) => {
     const day = new Date(dt * 1000);
@@ -21,7 +22,7 @@ const WeatherDetail = () => {
       };
       return day.toLocaleString("it-IT", options); // Friday, January 15, 2021
     } else {
-      return day.toLocaleString("it-IT", { weekday: "long" }); // Friday
+      return day.toLocaleString("it-IT", { weekday: "long", day: "numeric" }); // Friday
     }
   };
 

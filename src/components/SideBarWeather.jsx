@@ -36,7 +36,7 @@ const SideBarWeather = ({ infoCityWeather, infoNextDays, createDate }) => {
       <p>Next Days</p>
 
       {/* generazione previsioni dei prossimi 3 giorni */}
-      <Forecast5Days infoNextDays={infoNextDays} />
+      <Forecast5Days infoNextDays={infoNextDays} createDate={createDate} />
     </Container>
   );
 };

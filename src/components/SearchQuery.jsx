@@ -10,7 +10,7 @@ const SearchQuery = ({ SearchQuery, setSearchQuery, setHasSearched }) => {
   };
   return (
     <Form className="mt-4" onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="searchcity">
+      <Form.Group className="mb-3">
         <Form.Control
           id="form"
           type="text"

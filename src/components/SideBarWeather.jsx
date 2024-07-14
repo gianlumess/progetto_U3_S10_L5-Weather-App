@@ -1,4 +1,4 @@
-import { Col, Container, Image, Row } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { ArrowDownShort, ArrowUpShort, Wind } from "react-bootstrap-icons";
 import Forecast5Days from "./Forecast5Days";
 

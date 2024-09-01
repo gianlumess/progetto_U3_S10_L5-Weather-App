@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 
 const CitiesSearched = ({ arrayCities, setArrayCities, searchQuery, hasSearched, setLatitude, setLongitude }) => {
   const fetchLatAndLon = () => {
-    fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=5&appid=557333cd2bc318f169e5cb21158c02aa`
-    )
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=5&appid=${import.meta.env.VITE_API_KEY}`)
       .then((resp) => {
         if (resp.ok) {
           console.log(resp);

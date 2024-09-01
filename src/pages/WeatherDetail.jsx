@@ -29,7 +29,9 @@ const WeatherDetail = () => {
   //funzione per la fetch per reperire i dati sul meteo della città selezionata, i parametri obbligatori vengono passati sull'url(lat e lon)
   const fetchWeatherCitySearched = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&appid=${
+        import.meta.env.VITE_API_KEY
+      }&units=metric`
     )
       .then((resp) => {
         if (resp.ok) {
@@ -48,7 +50,9 @@ const WeatherDetail = () => {
 
   const fetchWeatherNextDays = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${params.lat}&lon=${params.lon}&appid=557333cd2bc318f169e5cb21158c02aa&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${params.lat}&lon=${params.lon}&appid=${
+        import.meta.env.VITE_API_KEY
+      }&units=metric`
     )
       .then((resp) => {
         if (resp.ok) {
